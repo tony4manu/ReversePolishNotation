@@ -12,14 +12,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ReversePolishCalculatorTest {
+public class ReversePolishCalculatorRPNTest {
 
-	static ReversePolishCalculator revPolCalc;
+	static ReversePolishCalculatorRPN revPolCalc;
 	private double TEST_DELTA = 0.00001;
 	
 	@Before
 	public void setUp() throws Exception {
-		revPolCalc = new ReversePolishCalculator();
+		revPolCalc = new ReversePolishCalculatorRPN();
 		revPolCalc = null;
 	}
 
@@ -29,14 +29,14 @@ public class ReversePolishCalculatorTest {
 		System.out.println("# Calcluate +");
 		String expression = "1 1 +";
 		double expResult = 2.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 		
 
 		System.out.println("\n# Calcluate /");
 		expression = "1 3 /";
 		expResult = 0.33333;
-		result = ReversePolishCalculator.compute(expression);
+		result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);	
 	}
 	
@@ -45,7 +45,7 @@ public class ReversePolishCalculatorTest {
 		String expression = "3 2 + 8 4 * -";
 		System.out.println("calculate \"" + expression + "\"");
 		double expResult = -27.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 	}
 	
@@ -56,10 +56,10 @@ public class ReversePolishCalculatorTest {
 		System.out.println("calculate -" + expression +
 				"\" should work the same as " + exprWAsterisk);
 		double expResult = 15.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 		
-		double resultWSlash = ReversePolishCalculator.compute(exprWAsterisk);
+		double resultWSlash = ReversePolishCalculatorRPN.compute(exprWAsterisk);
 		assertEquals(result, resultWSlash, TEST_DELTA);
 	}
 	
@@ -70,10 +70,10 @@ public class ReversePolishCalculatorTest {
 		String exprWSlash = expression.replace("\u00F7", "/");	// division sign
 		System.out.println("calculate \"" + expression + "\" should work the same as " + exprWSlash);
 		double expResult = 4.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 		
-		double resultWSlash = ReversePolishCalculator.compute(exprWSlash);
+		double resultWSlash = ReversePolishCalculatorRPN.compute(exprWSlash);
 		assertEquals(result, resultWSlash, TEST_DELTA);
 	}
 
@@ -81,7 +81,7 @@ public class ReversePolishCalculatorTest {
 	public void testComputeWithDivision() {
 		String expression = "59 7 /";
 		double expResult = 8.42857;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 	}
 	
@@ -93,10 +93,10 @@ public class ReversePolishCalculatorTest {
 		System.out.println("calculate -" + expression +
 				"\" should work the same as " + exprWHyphen);
 		double expResult = 3.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 		
-		double resultWSlash = ReversePolishCalculator.compute(exprWHyphen);
+		double resultWSlash = ReversePolishCalculatorRPN.compute(exprWHyphen);
 		assertEquals(result, resultWSlash, TEST_DELTA);
 	}
 	
@@ -105,7 +105,7 @@ public class ReversePolishCalculatorTest {
 	public void testComputeWithAddition() {
 		String expression = "9 7 +";
 		double expResult = 16.0;
-		double result = ReversePolishCalculator.compute(expression);
+		double result = ReversePolishCalculatorRPN.compute(expression);
 		assertEquals(expResult, result, TEST_DELTA);
 	}
 

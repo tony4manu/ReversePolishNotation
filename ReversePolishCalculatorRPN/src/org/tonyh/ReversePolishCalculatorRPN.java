@@ -1,5 +1,5 @@
 /*
-ReversePolishCalculator.java  RPN
+ReversePolishCalculatorRPN.java  RPN	(digit version)
 
 tonyH, 20200509Sa
 
@@ -11,7 +11,7 @@ package org.tonyh;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-public class ReversePolishCalculator {
+public class ReversePolishCalculatorRPN {
 	
 	/**
      * Computes the outcome of a given expression in Reverse Polish Notation
@@ -73,11 +73,16 @@ public class ReversePolishCalculator {
 	 * Runs the calculation for the RPN expression in args[0].
 	 */
 	public static void main(String[] args) {
-		try {
-			compute(args[0]);
-		} catch (Exception err) {
-			System.out.println("Error: " + err.getMessage());
-			System.out.println(err.toString());
+		if (args.length > 0) {
+			try {
+				compute(args[0]);
+			} catch (Exception err) {
+				System.out.println("Error: " + err.getMessage());
+				System.out.println(err.toString());
+			}
+		} else {
+			System.out.println("Usage: ReversePolishCalculator FIVE FOUR ADD");
+			System.exit(0);
 		}
 	}
 
